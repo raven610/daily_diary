@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Models/WriteData.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,11 +21,13 @@ class _MyAppState extends State<MyApp> {
               leading: Icon(
                 Icons.email,
                 size: 35,
+                color: Colors.grey,
               ),
               title: Text(
                 'Daily Diary',
                 style: TextStyle(
                   fontSize: 22,
+                  color: Colors.grey,
                 ),
               ),
               bottom: TabBar(
@@ -46,9 +49,22 @@ class _MyAppState extends State<MyApp> {
             ),
             body: TabBarView(
               children: <Widget>[
-                Text('Chat View'),
+                Container(
+                  padding: EdgeInsets.only(bottom: 40),
+                  color: Colors.black,
+                  child: ListView(
+                    children: DataTile().getWriteData(),
+                  ),
+                ),
                 Text('Settings'),
               ],
+            ),
+            bottomSheet: TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText:'Message'
+              ),
             ),
           ),
         ),
